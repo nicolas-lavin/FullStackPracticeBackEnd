@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require('cors');
 const { sequelize } = require('./models/index'); 
-const blogRoutes = require('./routes/routes');
 const morgan = require("morgan");
 // Initializations
 const app = express();
@@ -14,7 +13,8 @@ app.use(cors());
 // Global Variables
 
 // Routes
-app.use('/Blog', require('./routes/routes'));
+app.use('/person', require('./routes/PersonRoutes'));
+app.use('/registation', require('./routes/RegistrationRoutes'));
 // Static Files
 // Starting Server
 app.listen(app.get('port'), () => {

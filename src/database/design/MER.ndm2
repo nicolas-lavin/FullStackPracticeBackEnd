@@ -146,156 +146,6 @@
           },
           {
             "objectType": "Table_MYSQL",
-            "name": "REGISTRIES",
-            "comment": "",
-            "engine": "",
-            "characterSet": "",
-            "collation": "",
-            "autoIncrement": 0,
-            "tablespace": "",
-            "storage": "",
-            "insertMethod": "",
-            "connection": "",
-            "checksum": false,
-            "rowFormat": "",
-            "avgRowLength": 0,
-            "maxRows": 0,
-            "minRows": 0,
-            "keyBlockSize": 0,
-            "packKeys": "",
-            "delayKeyWrite": false,
-            "dataDirectory": "",
-            "indexDirectory": "",
-            "statsAutoRecalc": "",
-            "statsPersistent": "",
-            "statsSamplePages": 0,
-            "union": "",
-            "pageCheckSum": false,
-            "transactional": false,
-            "compression": "",
-            "oldName": "",
-            "encryption": false,
-            "createOptions": "",
-            "createTime": "",
-            "checkTime": "",
-            "dataFree": 0,
-            "dataLength": 0,
-            "indexLength": 0,
-            "maxDataLength": 0,
-            "rows": 0,
-            "updateTime": "",
-            "DDL": "",
-            "partitionBy": "",
-            "partitionByExpr": "",
-            "partitions": 0,
-            "partitionKeyAlgorithm": "",
-            "subPartitionBy": "",
-            "subPartitionByExpr": "",
-            "subPartitions": 0,
-            "subPartitionKeyAlgorithm": "",
-            "fields": [
-              {
-                "objectType": "TableField_MYSQL",
-                "name": "id",
-                "type": "int",
-                "length": 11,
-                "decimals": -2147483648,
-                "isUnsigned": false,
-                "isZeroFill": false,
-                "setEnumValues": "",
-                "isBinary": false,
-                "charset": "",
-                "collation": "",
-                "isNullable": false,
-                "defaultType": "Others",
-                "defaultValue": "",
-                "isOnUpdateCurrentTimestamp": false,
-                "isAutoInc": false,
-                "comment": "",
-                "columnFormat": "",
-                "storage": "",
-                "isVirtual": false,
-                "isGeneratedAlways": false,
-                "virtualExpr": "",
-                "virtualType": "",
-                "oldName": "id"
-              },
-              {
-                "objectType": "TableField_MYSQL",
-                "name": "registration_date",
-                "type": "datetime",
-                "length": -2147483648,
-                "decimals": -2147483648,
-                "isUnsigned": false,
-                "isZeroFill": false,
-                "setEnumValues": "",
-                "isBinary": false,
-                "charset": "",
-                "collation": "",
-                "isNullable": false,
-                "defaultType": "Others",
-                "defaultValue": "",
-                "isOnUpdateCurrentTimestamp": false,
-                "isAutoInc": false,
-                "comment": "",
-                "columnFormat": "",
-                "storage": "",
-                "isVirtual": false,
-                "isGeneratedAlways": false,
-                "virtualExpr": "",
-                "virtualType": "",
-                "oldName": "registration_date"
-              },
-              {
-                "objectType": "TableField_MYSQL",
-                "name": "people_id",
-                "type": "int",
-                "length": 11,
-                "decimals": -2147483648,
-                "isUnsigned": false,
-                "isZeroFill": false,
-                "setEnumValues": "",
-                "isBinary": false,
-                "charset": "",
-                "collation": "",
-                "isNullable": false,
-                "defaultType": "Others",
-                "defaultValue": "",
-                "isOnUpdateCurrentTimestamp": false,
-                "isAutoInc": false,
-                "comment": "",
-                "columnFormat": "",
-                "storage": "",
-                "isVirtual": false,
-                "isGeneratedAlways": false,
-                "virtualExpr": "",
-                "virtualType": "",
-                "oldName": "people_id"
-              }
-            ],
-            "indexes": [],
-            "primaryKey": {
-              "objectType": "PrimaryKey_MYSQL",
-              "name": "",
-              "fields": [
-                {
-                  "objectType": "IndexField_MYSQL",
-                  "name": "id",
-                  "keyLength": 0,
-                  "order": "",
-                  "oldName": ""
-                }
-              ],
-              "oldName": "",
-              "indexMethod": "",
-              "comment": ""
-            },
-            "foreignKeys": [],
-            "triggers": [],
-            "tablePartitions": []
-          },
-          {
-            "objectType": "Table_MYSQL",
             "name": "PEOPLE",
             "comment": "",
             "engine": "",
@@ -476,7 +326,7 @@
               },
               {
                 "objectType": "TableField_MYSQL",
-                "name": "type_people_id",
+                "name": "type_person_id",
                 "type": "int",
                 "length": 11,
                 "decimals": -2147483648,
@@ -498,7 +348,7 @@
                 "isGeneratedAlways": false,
                 "virtualExpr": "",
                 "virtualType": "",
-                "oldName": "type_people_id"
+                "oldName": "type_person_id"
               }
             ],
             "indexes": [
@@ -572,7 +422,7 @@
             "foreignKeys": [
               {
                 "objectType": "ForeignKey_MYSQL",
-                "name": "fk_type_people",
+                "name": "fk_type_person",
                 "fields": [
                   "type_people_id"
                 ],
@@ -589,14 +439,14 @@
               },
               {
                 "objectType": "ForeignKey_MYSQL",
-                "name": "fk_PEOPLE_REGISTRIES_1",
+                "name": "fk_person_registries",
                 "fields": [
                   "id"
                 ],
                 "referenceSchema": "Default",
-                "referenceTable": "REGISTRIES",
+                "referenceTable": "REGISTRATIONS",
                 "referenceFields": [
-                  "people_id"
+                  "person_id"
                 ],
                 "onDelete": "CASCADE",
                 "onUpdate": "CASCADE",
@@ -605,6 +455,156 @@
                 "oldName": ""
               }
             ],
+            "triggers": [],
+            "tablePartitions": []
+          },
+          {
+            "objectType": "Table_MYSQL",
+            "name": "REGISTRATIONS",
+            "comment": "",
+            "engine": "",
+            "characterSet": "",
+            "collation": "",
+            "autoIncrement": 0,
+            "tablespace": "",
+            "storage": "",
+            "insertMethod": "",
+            "connection": "",
+            "checksum": false,
+            "rowFormat": "",
+            "avgRowLength": 0,
+            "maxRows": 0,
+            "minRows": 0,
+            "keyBlockSize": 0,
+            "packKeys": "",
+            "delayKeyWrite": false,
+            "dataDirectory": "",
+            "indexDirectory": "",
+            "statsAutoRecalc": "",
+            "statsPersistent": "",
+            "statsSamplePages": 0,
+            "union": "",
+            "pageCheckSum": false,
+            "transactional": false,
+            "compression": "",
+            "oldName": "",
+            "encryption": false,
+            "createOptions": "",
+            "createTime": "",
+            "checkTime": "",
+            "dataFree": 0,
+            "dataLength": 0,
+            "indexLength": 0,
+            "maxDataLength": 0,
+            "rows": 0,
+            "updateTime": "",
+            "DDL": "",
+            "partitionBy": "",
+            "partitionByExpr": "",
+            "partitions": 0,
+            "partitionKeyAlgorithm": "",
+            "subPartitionBy": "",
+            "subPartitionByExpr": "",
+            "subPartitions": 0,
+            "subPartitionKeyAlgorithm": "",
+            "fields": [
+              {
+                "objectType": "TableField_MYSQL",
+                "name": "id",
+                "type": "int",
+                "length": 11,
+                "decimals": -2147483648,
+                "isUnsigned": false,
+                "isZeroFill": false,
+                "setEnumValues": "",
+                "isBinary": false,
+                "charset": "",
+                "collation": "",
+                "isNullable": false,
+                "defaultType": "Others",
+                "defaultValue": "",
+                "isOnUpdateCurrentTimestamp": false,
+                "isAutoInc": false,
+                "comment": "",
+                "columnFormat": "",
+                "storage": "",
+                "isVirtual": false,
+                "isGeneratedAlways": false,
+                "virtualExpr": "",
+                "virtualType": "",
+                "oldName": "id"
+              },
+              {
+                "objectType": "TableField_MYSQL",
+                "name": "registration_date",
+                "type": "datetime",
+                "length": -2147483648,
+                "decimals": -2147483648,
+                "isUnsigned": false,
+                "isZeroFill": false,
+                "setEnumValues": "",
+                "isBinary": false,
+                "charset": "",
+                "collation": "",
+                "isNullable": false,
+                "defaultType": "Others",
+                "defaultValue": "",
+                "isOnUpdateCurrentTimestamp": false,
+                "isAutoInc": false,
+                "comment": "",
+                "columnFormat": "",
+                "storage": "",
+                "isVirtual": false,
+                "isGeneratedAlways": false,
+                "virtualExpr": "",
+                "virtualType": "",
+                "oldName": "registration_date"
+              },
+              {
+                "objectType": "TableField_MYSQL",
+                "name": "person_id",
+                "type": "int",
+                "length": 11,
+                "decimals": -2147483648,
+                "isUnsigned": false,
+                "isZeroFill": false,
+                "setEnumValues": "",
+                "isBinary": false,
+                "charset": "",
+                "collation": "",
+                "isNullable": false,
+                "defaultType": "Others",
+                "defaultValue": "",
+                "isOnUpdateCurrentTimestamp": false,
+                "isAutoInc": false,
+                "comment": "",
+                "columnFormat": "",
+                "storage": "",
+                "isVirtual": false,
+                "isGeneratedAlways": false,
+                "virtualExpr": "",
+                "virtualType": "",
+                "oldName": "person_id"
+              }
+            ],
+            "indexes": [],
+            "primaryKey": {
+              "objectType": "PrimaryKey_MYSQL",
+              "name": "",
+              "fields": [
+                {
+                  "objectType": "IndexField_MYSQL",
+                  "name": "id",
+                  "keyLength": 0,
+                  "order": "",
+                  "oldName": ""
+                }
+              ],
+              "oldName": "",
+              "indexMethod": "",
+              "comment": ""
+            },
+            "foreignKeys": [],
             "triggers": [],
             "tablePartitions": []
           }
@@ -650,7 +650,7 @@
           "x": 580,
           "y": 90,
           "width": 200,
-          "height": 110,
+          "height": 90,
           "isBold": false,
           "titleColor": {
             "r": 55,
@@ -662,11 +662,11 @@
         {
           "type": "table",
           "schemaName": "Default",
-          "tableName": "REGISTRIES",
+          "tableName": "REGISTRATIONS",
           "x": 250,
           "y": 280,
           "width": 200,
-          "height": 200,
+          "height": 110,
           "isBold": false,
           "titleColor": {
             "r": 55,
@@ -679,7 +679,7 @@
       "layers": [],
       "relations": [
         {
-          "name": "fk_type_people",
+          "name": "fk_type_person",
           "sourceTableName": "PEOPLE",
           "sourceSchemaName": "Default",
           "lineWidth": 1,
@@ -690,22 +690,22 @@
               "y": 200
             },
             {
-              "x": 510,
+              "x": 515,
               "y": 200
             },
             {
-              "x": 510,
-              "y": 130
+              "x": 515,
+              "y": 140
             },
             {
               "x": 565,
-              "y": 130
+              "y": 140
             }
           ],
           "label": {
             "x": 455,
             "y": 162,
-            "width": 108,
+            "width": 107,
             "height": 30,
             "fontName": "Arial Unicode MS",
             "fontSize": 14,
@@ -721,33 +721,33 @@
           }
         },
         {
-          "name": "fk_PEOPLE_REGISTRIES_1",
+          "name": "fk_person_registries",
           "sourceTableName": "PEOPLE",
           "sourceSchemaName": "Default",
           "lineWidth": 1,
           "visible": true,
           "vertices": [
             {
-              "x": 350,
+              "x": 360,
               "y": 235
             },
             {
-              "x": 350,
+              "x": 360,
               "y": 250
             },
             {
-              "x": 350,
+              "x": 360,
               "y": 250
             },
             {
-              "x": 350,
+              "x": 360,
               "y": 265
             }
           ],
           "label": {
-            "x": 358,
+            "x": 368,
             "y": 225,
-            "width": 172,
+            "width": 138,
             "height": 30,
             "fontName": "Arial Unicode MS",
             "fontSize": 14,
