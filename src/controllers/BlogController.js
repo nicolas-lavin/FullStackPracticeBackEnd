@@ -1,8 +1,9 @@
 // Modelo creado
-const Blog = require('../models/Blog.js');
+const models = require('../models');
+const Blog = models.Blog;
 // Metodos para el CRUD
 // mostrar todos los registros
-export const getAllBlogs = async (req,res) => {
+const getAllBlogs = async (req,res) => {
     try{
         const blogs = await Blog.findAll();
         res.json(blogs);
@@ -11,7 +12,7 @@ export const getAllBlogs = async (req,res) => {
     }
 }
 // Mostrar un solo registro
-export const getBlog = async (req,res) => {
+const getBlog = async (req,res) => {
     try {
         const blog = await Blog.findByPk(req.params.id);
         res.json(blog);
@@ -20,7 +21,7 @@ export const getBlog = async (req,res) => {
     }
 }
 // Crear un registro
-export const createBlog = async (req, res) => {
+const createBlog = async (req, res) => {
     try {
         await Blog.create(req.body);
         res.json({message: "Registro creado correctamente"})
@@ -29,7 +30,7 @@ export const createBlog = async (req, res) => {
     }
 }
 // Actualizar registro
-export const updateBlog = async (req, res) => {
+const updateBlog = async (req, res) => {
     try{
         await Blog.upsert({
             id: req.params.id, 
@@ -42,7 +43,7 @@ export const updateBlog = async (req, res) => {
     }
 }
 // Eliminar un registro
-export const deleteBlog = async (req,res) => {
+const deleteBlog = async (req,res) => {
     try {
         Blog.destroy({
             where: {id : req.params.id} 
@@ -52,3 +53,5 @@ export const deleteBlog = async (req,res) => {
         res.json({message: error.message});
     }
 }
+
+module.exports = {createBlog, deleteBlog, getAllBlogs,getBlog, updateBlog}
