@@ -1,10 +1,11 @@
 // Modelo creado
 const Person = require('../models').Person;
+const TypePerson = require('../models').TypePerson;
 // Metodos para el CRUD
 // mostrar todos los registros
 const getAllPeople = async (req,res) => {
     try{
-        const people = await Person.findAll();
+        const people = await Person.findAll({ include: TypePerson });
         res.json(people);
     } catch(error){
         res.json({status:500, message: error.message});

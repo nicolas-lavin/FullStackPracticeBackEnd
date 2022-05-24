@@ -15,6 +15,7 @@ app.use(cors());
 // Routes
 app.use('/person', require('./routes/PersonRoutes'));
 app.use('/registation', require('./routes/RegistrationRoutes'));
+app.use('/types/person', require('./routes/TypePersonRoutes'));
 // Static Files
 // Starting Server
 app.listen(app.get('port'), () => {
