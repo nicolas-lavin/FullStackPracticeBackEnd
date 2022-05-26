@@ -5,9 +5,9 @@ const TypePerson = require('../models').TypePerson;
 const getAllTypePeople = async (req,res) => {
     try{
         const typePeople = await TypePerson.findAll();
-        res.json(typePeople);
+        res.status(200).json(typePeople);
     } catch(error){
-        res.json({status:500, message: error.message});
+        res.status(500).json({message: error.message});
     }
 }
 

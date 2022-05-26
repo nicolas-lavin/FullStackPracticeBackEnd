@@ -6,27 +6,27 @@ const TypePerson = require('../models').TypePerson;
 const getAllPeople = async (req,res) => {
     try{
         const people = await Person.findAll({ include: TypePerson });
-        res.json(people);
+        res.status(200).json(people);
     } catch(error){
-        res.json({status:500, message: error.message});
+        res.status(500).json({message: error.message});
     }
 }
 // Mostrar un solo registro
 const getPerson = async (req,res) => {
     try {
         const person = await Person.findByPk(req.params.id);
-        res.json({status:200, menssage: "Persona encontrada", data: person});
+        res.status(200).json({menssage: "Persona encontrada", data: person});
     } catch (error) {
-        res.json({status:500, message: error.message});
+        res.status(500).json({message: error.message});
     }
 }
 // Crear un registro
 const createPerson = async (req, res) => {
     try {
         await Person.create(req.body);
-        res.json({status:200, message: "Registro creado correctamente"})
+        res.status(200).json({message: "Registro creado correctamente"})
     }catch (error){
-        res.json({status:500, message: error.message});
+        res.status(500).json({message: error.message});
     }
 }
 // Actualizar registro
@@ -40,9 +40,9 @@ const updatePerson = async (req, res) => {
             phone:req.body.phone,
             type_person_id:req.body.type_person_id,
         });
-        res.json({message: "Registro actualizado correctamente"})
+        res.status(200).json({message: "Registro actualizado correctamente"});
     } catch (error){
-        res.json({status:500, message: error.message});
+        res.status(500).json({message: error.message});
     }
 }
 // Eliminar un registro
@@ -51,9 +51,9 @@ const deletePerson = async (req,res) => {
         Person.destroy({
             where: {id : req.params.id} 
         });
-        res.json({message: "Registro eliminado correctamente"})
+        res.status(200).json({message: "Registro eliminado correctamente"})
     } catch (error) {
-        res.json({status:500, message: error.message});
+        res.status(500).json({message: error.message});
     }
 }
 
