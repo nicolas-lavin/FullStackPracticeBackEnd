@@ -15,7 +15,7 @@ const getAllPeople = async (req,res) => {
 const getPerson = async (req,res) => {
     try {
         const person = await Person.findByPk(req.params.id);
-        res.status(200).json({menssage: "Persona encontrada", data: person});
+        res.status(200).json({message: "Persona encontrada", data: person});
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -34,8 +34,8 @@ const updatePerson = async (req, res) => {
     try{
         await Person.upsert({
             id: req.params.id, 
-            rut:req.name.rut,
-            name:req.name.name, 
+            rut:req.body.rut,
+            name:req.body.name, 
             email:req.body.email,
             phone:req.body.phone,
             type_person_id:req.body.type_person_id,
