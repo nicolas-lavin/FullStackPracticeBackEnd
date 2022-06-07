@@ -15,7 +15,7 @@ const signUp = async (req, res) => {
     const token = jwt.sign({id: newUser.id}, process.env.APP_SECRET, {
         expiresIn: 86400 // 24 hrs
     });
-    res.status(200).json({token});
+    res.status(200).json({user: {id: newUser.id, userName: newUser.userName, email: newUser.email}, token: token});
 }
 
 const signIn = async (req, res) => {
@@ -27,7 +27,7 @@ const signIn = async (req, res) => {
     const token = jwt.sign({id: userFound.id}, process.env.APP_SECRET, {
         expiresIn: 86400 // 24 hrs
     });
-    res.status(200).json({token});
+    res.status(200).json({user: {id: userFound.id,userName: userFound.userName, email: userFound.email}, token: token});
 }
 
 module.exports = {signIn, signUp}
