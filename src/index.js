@@ -4,7 +4,6 @@ const { sequelize } = require('./models/index');
 // Middlewares Imports
 const morgan = require("morgan");
 const cors = require('cors');
-const { verifyToken } = require('./middlewares/authJwt');
 // Initializations
 const app = express();
 // Settings
@@ -18,7 +17,6 @@ app.use(cors());
 // Authentications Routes
 app.use('/auth', require('./routes/AuthRoutes'));
 // Routes
-//app.use('/person',verifyToken,require('./routes/PersonRoutes'));
 app.use('/person', require('./routes/PersonRoutes'));
 app.use('/registration', require('./routes/RegistrationRoutes'));
 app.use('/types/person', require('./routes/TypePersonRoutes'));

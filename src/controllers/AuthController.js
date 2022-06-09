@@ -51,14 +51,14 @@ const signIn = async (req, res) => {
 }
 
 const refreshToken = async (req, res) => {
-    const { refreshToken: requestToken } = req.body;
+    const requestToken = req.header("x-auth-token");
   
-    if (requestToken == null) return res.status(403).json({ message: "Refresh Token is required!" });
+    if (!requestToken) return res.status(403).json({ message: "Refresh Token is required!" });
   
     try {
       let refreshToken = await RefreshToken.findOne({ where: { token: requestToken } });
   
-      if (!refreshToken) return res.status(403).json({ message: "Refresh token is not in database!" });
+      if (!refreshToken) return res.status(403).json({ message: "Refresh token doesn't exist!" });
   
       if (RefreshToken.verifyExpiration(refreshToken)) {
         RefreshToken.destroy({ where: { id: refreshToken.id } });
@@ -80,4 +80,29 @@ const refreshToken = async (req, res) => {
     }
 };
 
-module.exports = {signIn, signUp, refreshToken}
+const logout = async (req, res) => {
+    const requestToken = req.header("x-auth-token");
+    await RefreshToken.destroy({ where: { token: requestToken } });
+    res.sendStatus(204);
+}
+
+const getUserProfile = async (req, res) => {
+    try {
+        const userProf = await User.findByPk(req.user_id);
+        const { id, userName, firstName, lastName, email } = userProf;
+        res.status(200).json({
+            user: {
+                id,
+                userName,
+                firstName,
+                lastName,
+                email
+            }
+        });
+    } catch (err) {
+        res.status(400).json( {message:err });
+    }
+    
+}
+
+module.exports = {signIn, signUp, refreshToken, logout, getUserProfile}
