@@ -21,9 +21,6 @@ const signUp = async (req, res) => {
     let refreshToken = await RefreshToken.createToken(newUser);
 
     res.status(200).json({
-        id: newUser.id, 
-        userName: newUser.userName, 
-        email: newUser.email,
         accessToken: token,
         refreshToken: refreshToken
     });
@@ -42,17 +39,14 @@ const signIn = async (req, res) => {
     let refreshToken = await RefreshToken.createToken(userFound);
     
     res.status(200).json({
-        id: userFound.id,
-        userName: userFound.userName, 
-        email: userFound.email, 
         accessToken: token,
         refreshToken: refreshToken
     });
 }
 
 const refreshToken = async (req, res) => {
-    const requestToken = req.header("x-auth-token");
-  
+    const requestToken = req.headers['x-auth-token'];
+    
     if (!requestToken) return res.status(403).json({ message: "Refresh Token is required!" });
   
     try {
