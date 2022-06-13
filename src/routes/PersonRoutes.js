@@ -1,6 +1,6 @@
 const express = require('express');
 const {getAllPeople,getPerson,createPerson, updatePerson, deletePerson} = require('../controllers/PersonController');
-
+//const { authJwt } = require("../middlewares");
 const router = express.Router();
 
 router.get('/',getAllPeople);
